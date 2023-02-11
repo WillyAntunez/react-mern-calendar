@@ -1,4 +1,3 @@
-import { da } from "date-fns/locale";
 import { useDispatch, useSelector } from "react-redux"
 import { calendarApi } from "../api";
 import { clearErrorMessage, onChecking, onLogin, onLogout, onLogoutCalendar } from "../store";
@@ -21,7 +20,6 @@ export const useAuthStore = () => {
             dispatch( onLogin({ name: data.name, uid: data.uid }) );
 
         } catch (error) {
-            console.log(error)
             dispatch( onLogout('Credenciales incorrectas') ); 
             setTimeout(() => {
                 dispatch( clearErrorMessage() );
@@ -47,7 +45,6 @@ export const useAuthStore = () => {
             
 
         } catch (error) {
-            console.log(error)
             dispatch( onLogout(error.response.data?.msg || '') );
             setTimeout(() => {
                 dispatch( clearErrorMessage() );
